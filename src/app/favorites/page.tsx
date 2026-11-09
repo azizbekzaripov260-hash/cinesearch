@@ -98,7 +98,7 @@ export default function FavoritesPage() {
         ].map((f) => (
           <button
             key={f.id}
-            onClick={() => setFilter(f.id as any)}
+            onClick={() => setFilter(f.id as "all" | "movie" | "tv")}
             className={`px-3 py-1.5 rounded-full text-sm font-medium transition ${
               filter === f.id
                 ? "bg-white text-black"

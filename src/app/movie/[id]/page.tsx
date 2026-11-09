@@ -1,6 +1,5 @@
 import { getMovieDetails, getImageUrl, getTitle, getYear } from "@/lib/tmdb";
 import Image from "next/image";
-import Link from "next/link";
 import MovieDetailClient from "@/components/MovieDetailClient";
 import MovieRow from "@/components/MovieRow";
 

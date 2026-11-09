@@ -6,7 +6,6 @@ import {
   getUpcoming,
 } from "@/lib/tmdb";
 import Hero from "@/components/Hero";
-import MovieRow from "@/components/MovieRow";
 import HomeClient from "@/components/HomeClient";
 
 export const revalidate = 3600;

@@ -2,10 +2,9 @@
 
 import { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { searchMulti, getTitle, getYear, getImageUrl, type Movie } from "@/lib/tmdb";
+import { searchMulti, getTitle, getImageUrl, type Movie } from "@/lib/tmdb";
 import MovieCard from "@/components/MovieCard";
 import Image from "next/image";
-import Link from "next/link";
 
 function SearchContent() {
   const searchParams = useSearchParams();
@@ -90,7 +89,7 @@ function SearchContent() {
             ].map((t) => (
               <button
                 key={t.id}
-                onClick={() => setTab(t.id as any)}
+                onClick={() => setTab(t.id as "all" | "movie" | "tv" | "person")}
                 className={`px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap ${
                   tab === t.id ? "bg-white text-black" : "bg-zinc-900 text-zinc-400"
                 }`}
@@ -112,9 +111,9 @@ function SearchContent() {
                   item.media_type === "person" ? (
                     <div key={item.id} className="text-center">
                       <div className="aspect-square rounded-full overflow-hidden bg-zinc-900 mb-2 mx-auto w-24 h-24 relative">
-                        {item.poster_path || (item as any).profile_path ? (
+                        {item.poster_path || item.profile_path ? (
                           <Image
-                            src={getImageUrl((item as any).profile_path || item.poster_path, "w200")}
+                            src={getImageUrl(item.profile_path || item.poster_path, "w200")}
                             alt={getTitle(item)}
                             fill
                             className="object-cover"
